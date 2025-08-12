@@ -61,7 +61,7 @@
 <body>
     <div class="container">
         <h1>🌍 Abrir Mapa Personalizado</h1>
-        <p>Haz clic para abrir el mapa. En iOS se abrirá en Safari automáticamente.</p>
+        <p>Haz clic para abrir el mapa en tu navegador por defecto.</p>
         <button onclick="abrirMapa()">Abrir Mapa</button>
     </div>
     <footer>Desarrollado para acceso rápido al mapa</footer>
@@ -69,15 +69,16 @@
     <script>
         function abrirMapa() {
             const enlace = "https://acortar.link/hDsoZD";
-            const esIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const url = new URL(enlace);
 
-            if (esIOS) {
-                // En iOS Safari es el navegador por defecto
-                window.location.href = enlace;
-            } else {
-                // Abre en el navegador actual
-                window.open(enlace, "_blank");
+            // Bloquear si no es https o si intenta abrir Google Maps
+            if (url.protocol !== "https:" || url.hostname.includes("google.com") && url.pathname.includes("/maps")) {
+                alert("Este enlace no está permitido.");
+                return;
             }
+
+            // Abrir en navegador por defecto
+            window.location.href = enlace;
         }
     </script>
 </body>
