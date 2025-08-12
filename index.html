@@ -19,18 +19,28 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 20px;
+            min-height: 100vh;
         }
 
         h1 {
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         p {
             font-size: 1rem;
-            margin-bottom: 30px;
-            max-width: 300px;
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border: none;
+            margin-bottom: 20px;
+            border-radius: 10px;
         }
 
         button {
@@ -51,27 +61,31 @@
         }
 
         footer {
-            position: absolute;
-            bottom: 10px;
+            text-align: center;
             font-size: 0.8rem;
             opacity: 0.8;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🌍 Abrir Mapa Personalizado</h1>
-        <p>Haz clic para abrir el mapa en tu navegador y ver todo el contenido especial.</p>
-        <button onclick="abrirMapa()">Abrir Mapa</button>
+        <p>Puedes ver el mapa directamente aquí o abrirlo en otra pestaña para explorarlo mejor.</p>
+
+        <!-- Mapa incrustado -->
+        <iframe src="https://www.google.com/maps/d/embed?mid=17TGIO9SYSzpHt3AQiySSolzeha3Mav0&ehbc=2E312F"></iframe>
+
+        <!-- Botón que abre el mapa con enlace acortado para evitar app -->
+        <button onclick="abrirMapa()">Abrir en otra pestaña</button>
     </div>
+
     <footer>Desarrollado para acceso rápido al mapa</footer>
 
     <script>
         function abrirMapa() {
-            // URL directa del mapa, sin esquema maps://
-            const enlace = "https://www.google.com/maps/d/viewer?mid=17TGIO9SYSzpHt3AQiySSolzeha3Mav0&ll=-21.636347171665946%2C39.14395746978777&z=2";
-
-            // Forzar apertura en una nueva pestaña del navegador
+            // Enlace acortado para evitar apertura en app de Google Maps
+            const enlace = "https://acortar.link/hDsoZD";
             window.open(enlace, "_blank", "noopener,noreferrer");
         }
     </script>
